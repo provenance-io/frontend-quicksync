@@ -8,7 +8,7 @@ export const TABLE_HEADERS = [
     id: 'network',
   },
   {
-    display: 'Checksum',
+    display: 'MD5 Checksum (Base64)',
     id: 'checksum',
   },
   {
