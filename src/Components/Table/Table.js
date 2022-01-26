@@ -8,8 +8,8 @@ const TableContainer = styled.div`
   max-width: 100%;
   overflow-x: auto;
   margin-bottom: 20px;
-  border: 1px solid #e9effd;
-  border-radius: 10px;
+  border: 1px solid #131620;
+  border-radius: 5px;
 `;
 const TableMain = styled.table`
   width: 100%;
@@ -21,32 +21,27 @@ const TableHead = styled.thead`
   padding-bottom: 14px;
   text-align: left;
   font-weight: 500;
-  box-shadow: -1px 0 1px 1px #ededed;
-  background: #e9effd;
-`;
+  `;
 const HeaderText = styled.th`
   font-size: 1.28rem;
-  padding: 10px 20px;
+  background: #31385f;
+  padding: 16px;
   white-space: nowrap;
-  ${({ clickable }) => clickable && 'cursor: pointer;'}
 `;
 const Row = styled.tr`
-  border-bottom: 1px solid #777777;
   &:nth-child(even) {
-    background: #f2f6ff;
+    background: #2d2f3f;
   }
 `;
 const TableBody = styled.tbody``;
 const TableData = styled.td`
   text-align: left;
-  padding: 10px 20px;
-  min-width: ${({ small }) => !small && '100px'};
-  padding: '10px 20px';
+  padding: 16px;
   vertical-align: middle;
 `;
 const DownloadButton = styled.a`
   background: #498afd;
-  padding: 6px 10px;
+  padding: 8px 14px;
   border-radius: 5px;
   color: white;
   &:hover {
@@ -76,20 +71,20 @@ export const Table = ({
       indexed,
     }) => (
       <Row key={id}>
-        <TableData small>
+        <TableData>
           <DownloadButton href={download} download={name}>Download</DownloadButton>
         </TableData>
         <TableData>{network}</TableData>
         <TableData>{checksum}</TableData>
-        <TableData small>{fileSize(size)}</TableData>
-        <TableData small>{date}</TableData>
-        <TableData small>
+        <TableData>{fileSize(size)}</TableData>
+        <TableData>{date}</TableData>
+        <TableData>
           <a href={`${EXPLORER_URL}/block/${blockHeight}`} target="_blank" rel="noreferrer">
             {blockHeight}
           </a>
         </TableData>
-        <TableData small>{version}</TableData>
-        <TableData small>{indexed}</TableData>
+        <TableData>{version}</TableData>
+        <TableData>{indexed}</TableData>
       </Row>
     ))
   );

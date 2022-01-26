@@ -1,0 +1,55 @@
+apiVersion: ctl.provenance.com/v1
+kind: ProvenanceDeployment
+metadata:
+  name: frontend-quicksync
+  namespace: apis
+  labels:
+    pd: frontend-quicksync
+spec:
+  selector:
+    matchLabels:
+      pd: frontend-quicksync
+  template:
+    metadata:
+      labels:
+        pd: frontend-quicksync
+    spec:
+      kong:
+        enabled: true
+        services:
+          - name: frontend-quicksync
+            proxy:
+              path: /quicksync
+            route:
+              path: /quicksync
+              strip_path: true
+              preserve_host: true
+            jwt:
+              enabled: false
+              testOverride: true #prevents jwt plugin from being created in test
+      deployment:
+        port: 3002
+        replicas:
+          prod: 1
+          test: 1
+        isFrontEnd: true
+        image:
+          prod: us.gcr.io/figure-production/frontend-quicksync:latest
+          test: us.gcr.io/figure-development/frontend-quicksync:latest
+        networkPolicy:
+          enabled: true
+        resources:
+          requests:
+            memory: "50Mi"
+            cpu: "100m"
+          limits:
+            memory: "1024Mi"
+            cpu: "500m"
+        readinessProbe:
+          path: /
+          periodSeconds: 3
+          initialDelaySeconds: 30
+        livenessProbe:
+          path: /
+          periodSeconds: 3
+          initialDelaySeconds: 100
