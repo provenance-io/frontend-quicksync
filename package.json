@@ -24,10 +24,11 @@
     "eslint-plugin-react-hooks": "4.2.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "docker": "docker build -t frontend-quicksync:local .",
     "build": "react-scripts build",
-    "test": "",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "start": "react-scripts start",
+    "test": ""
   },
   "browserslist": {
     "production": [
