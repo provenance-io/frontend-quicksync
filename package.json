@@ -1,8 +1,7 @@
 {
   "name": "frontend-quicksync",
   "version": "0.1.0",
-  "homepage": "/quicksync",
-  "private": true,
+  "private": false,
   "dependencies": {
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
