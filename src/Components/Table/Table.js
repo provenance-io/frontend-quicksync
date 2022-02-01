@@ -13,7 +13,7 @@ const TableContainer = styled.div`
 `;
 const TableMain = styled.table`
   width: 100%;
-  overflow-x: auto;
+  overflow-x: scroll;
   white-space: nowrap;
   border-spacing: 0;
 `;

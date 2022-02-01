@@ -7,9 +7,12 @@ import { useEffect, useState } from 'react';
 const Wrapper = styled.div`
   background: top / contain no-repeat url(${backgroundImage}) #131620;
   font-size: 1.3rem;
+  @media (max-width: 600px) {
+    background: top / cover no-repeat url(${backgroundImage}) #131620;
+  }
 `;
 const Content = styled.div`
-  padding: 160px 0px 120px 0px;
+  padding: 160px 50px 120px 50px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -17,6 +20,9 @@ const Content = styled.div`
   width: 100%;
   height: 100%;
   box-sizing: border-box;
+  @media (max-width: 600px) {
+    padding: 50px 20px;
+  }
 `;
 const Text = styled.p`
   font-size: 1.3rem;
@@ -40,8 +46,9 @@ const TopSection = styled.section`
 const SectionBorder = styled.section`
   margin-bottom: 40px;
   padding: 1px;
+  max-width: 1200px;
+  width: 100%;
   border-radius: 9px;
-  width: 1200px;
   box-sizing: content-box;
   background-image:
     linear-gradient(
@@ -61,6 +68,7 @@ const Section = styled.div`
   border-radius: 9px;
   box-shadow: 1px 1px 6px 0 rgba(0, 0, 0, 0.1);
   background-color: #191c27;
+  max-width: 100%;
   text-align: left;
   h1 {
     margin-top: 0;
