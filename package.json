@@ -12,6 +12,7 @@
   },
   "devDependencies": {
     "babel-eslint": "10.1.0",
+    "env-cmd": "10.1.0",
     "eslint": "7.32.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "8.3.0",
@@ -24,10 +25,15 @@
     "eslint-plugin-react-hooks": "4.2.0"
   },
   "scripts": {
-    "docker": "docker build -t frontend-quicksync:local .",
+    "build:production": "env-cmd -e default,production npm run build",
+    "build:staging": "env-cmd -e default,staging npm run build",
     "build": "react-scripts build",
+    "docker": "docker build -t frontend-quicksync:local .",
     "eject": "react-scripts eject",
-    "start": "react-scripts start",
+    "start:local": "PORT=3006 env-cmd -e default react-scripts start",
+    "start:production": "PORT=3006 env-cmd -e default,production react-scripts start",
+    "start:staging": "PORT=3006 env-cmd -e default,staging react-scripts start",
+    "start": "npm run start:local",
     "test": ""
   },
   "browserslist": {
