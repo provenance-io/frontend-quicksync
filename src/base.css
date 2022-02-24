@@ -34,3 +34,15 @@ h1 {
   line-height: 3.6rem;
   width: 100%;
 }
+code {
+  background: #191b28;
+  padding: 2px 6px;
+  border-radius: 3px;
+  color: #ffa501;
+  font-family: 'Courier New', Courier, monospace;
+}
+h6 {
+  color: #ffc800;
+  font-weight: bold;
+  margin-bottom: 20px;
+}

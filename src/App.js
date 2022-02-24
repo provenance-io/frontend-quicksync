@@ -74,25 +74,6 @@ const Section = styled.div`
     margin-top: 0;
   }
 `;
-const Warning = styled.h3`
-  color: #f3d66b;
-  background: #404027;
-  padding: 12px;
-  border-radius: 4px;
-  margin-bottom: 24px;
-`;
-const Bold = styled.p`
-  color: #ffc800;
-  font-weight: bold;
-  margin-bottom: 10px;
-`;
-const Code = styled.span`
-  background: #191b28;
-  padding: 2px 6px;
-  border-radius: 3px;
-  color: #ffa501;
-  font-family: 'Courier New', Courier, monospace;
-`;
 
 function App() {
   const [tableData, setTableData] = useState([]);
@@ -150,10 +131,6 @@ function App() {
         </TopSection>
         <SectionBorder>
           <Section>
-            <Warning>
-              <Bold>Note on 1.8.x cpu compatibility:</Bold>
-              <Code>wasm cache</Code> was included in the quicksync files for certain cpu specific features. When extracted, these would cause various issues.  The simple, temporary solution is to remove the contents of <Code>/provenanced/data/wasm/wasm/cache</Code> when starting a node using an existing quicksync copy.  For additional information, see <a href="https://github.com/wasmerio/wasmer/issues/2781" target="_blank" rel="noreferrer">https://github.com/wasmerio/wasmer/issues/2781</a>.
-            </Warning>
             <h1>Downloads</h1>
             <Table
               headers={TABLE_HEADERS}
