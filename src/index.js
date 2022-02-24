@@ -7,6 +7,7 @@ import App from './App';
 ReactDOM.render(
   <React.StrictMode>
     <App />
+    <div id="portal" />
   </React.StrictMode>,
   document.getElementById('root'),
 );

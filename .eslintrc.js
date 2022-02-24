@@ -30,6 +30,8 @@ module.exports = {
     'react/prefer-stateless-function': 'warn',
     'react/prop-types': 'warn',
     'react/require-default-props': 'warn',
+    'max-len': 'off',
+    'react/jsx-one-expression-per-line': 'off',
   },
   plugins: ['prettier', 'react-hooks'],
   env: {

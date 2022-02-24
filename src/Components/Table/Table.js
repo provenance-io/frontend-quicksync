@@ -2,6 +2,8 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { fileSize } from 'utils';
 import { EXPLORER_URL } from 'consts';
+import { WarningNote } from 'Components';
+import { WARNING_MESSAGES } from 'consts/warningMessages';
 
 const TableContainer = styled.div`
   flex-basis: 100%;
@@ -69,24 +71,38 @@ export const Table = ({
       version,
       blockHeight,
       indexed,
-    }) => (
-      <Row key={id}>
-        <TableData>
-          <DownloadButton href={download} download={name}>Download</DownloadButton>
-        </TableData>
-        <TableData>{network}</TableData>
-        <TableData>{checksum}</TableData>
-        <TableData>{fileSize(size)}</TableData>
-        <TableData>{date}</TableData>
-        <TableData>
-          <a href={`${EXPLORER_URL}/block/${blockHeight}`} target="_blank" rel="noreferrer">
-            {blockHeight}
-          </a>
-        </TableData>
-        <TableData>{version}</TableData>
-        <TableData>{indexed}</TableData>
-      </Row>
-    ))
+    }) => {
+      // Eventually this will need to be a cleaner/more fancy function
+      const checkWarning = () => {
+        // Get number version
+        const [, versionNo] = version.split('v');
+        // Only care about first three values, combine into single number (1.2.3 => 123)
+        const versionTotal = parseInt(`${versionNo[0]}${versionNo[2]}${versionNo[4]}`, 10);
+        // If the version total is less than 180, issue warning01
+        return versionTotal < 180 ? 'warning01' : false;
+      };
+      const useWarning = checkWarning();
+
+      return (
+        <Row key={id}>
+          <TableData>
+            <DownloadButton href={download} download={name}>Download</DownloadButton>
+            {useWarning && <WarningNote note={WARNING_MESSAGES[useWarning]} />}
+          </TableData>
+          <TableData>{network}</TableData>
+          <TableData>{checksum}</TableData>
+          <TableData>{fileSize(size)}</TableData>
+          <TableData>{date}</TableData>
+          <TableData>
+            <a href={`${EXPLORER_URL}/block/${blockHeight}`} target="_blank" rel="noreferrer">
+              {blockHeight}
+            </a>
+          </TableData>
+          <TableData>{version}</TableData>
+          <TableData>{indexed}</TableData>
+        </Row>
+      );
+    })
   );
 
   return (
