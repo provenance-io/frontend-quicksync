@@ -4,6 +4,7 @@
   "homepage": "/quicksync",
   "private": false,
   "dependencies": {
+    "compare-versions": "^5.0.1",
     "dompurify": "2.3.6",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -16,15 +17,12 @@
     "babel-eslint": "10.1.0",
     "env-cmd": "10.1.0",
     "eslint": "7.32.0",
-    "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "8.3.0",
     "eslint-config-react-app": "6.0.0",
-    "eslint-plugin-cypress": "2.12.1",
-    "eslint-plugin-import": "2.24.2",
-    "eslint-plugin-jsx-a11y": "6.4.1",
     "eslint-plugin-prettier": "4.0.0",
     "eslint-plugin-react": "7.28.0",
-    "eslint-plugin-react-hooks": "4.2.0"
+    "eslint-plugin-react-hooks": "4.2.0",
+    "prettier": "2.2.1"
   },
   "scripts": {
     "build:production": "env-cmd -e default,production npm run build",
@@ -37,6 +35,12 @@
     "start:staging": "PORT=3006 env-cmd -e default,staging react-scripts start",
     "start": "npm run start:local",
     "test": ""
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "prettier"
+    ]
   },
   "browserslist": {
     "production": [
