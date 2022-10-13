@@ -138,9 +138,8 @@ function App() {
           <Section>
             <h1>Instructions</h1>
             <Text>
-              Visit
+              Visit{' '}
               <a href={DOCS_URL} target="_blank" rel="noreferrer">
-                {' '}
                 Provenance.io docs{' '}
               </a>
               for detailed instructions on getting started.

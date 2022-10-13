@@ -75,12 +75,8 @@ export const Table = ({ className, headers, data: allData, emptyMsg }) => {
         const checkWarning = () => {
           // if there isn't a version assume it's latest
           if (!version) return false
-
-          // Get number version
-          const [, versionNo] = version.split('v')
-
           // show warning on any version before 1.8.0
-          return satisfies(versionNo, '>=1.8.0') ? false : 'warning01'
+          return satisfies(version, '^1.8.0') ? false : 'warning01'
         }
         const useWarning = checkWarning()
 
