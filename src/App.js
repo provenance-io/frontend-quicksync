@@ -102,7 +102,7 @@ function App() {
               indexed: item.mediaLink.includes('indexed') ? 'Yes' : 'No',
             }
           })
-          .sort((a, b) => (a.date < b.date ? 0 : -1))
+          .sort((a, b) => (a.date < b.date ? 1 : -1))
 
         setTableData(finalData)
       })()
