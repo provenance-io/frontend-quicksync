@@ -86,19 +86,18 @@ function App() {
         const res = await fetch(BACKUPS_URL)
         const data = await res.json()
 
-        const finalData = data?.items
-          .map(item => {
+        const finalData = [data]?.map(item => {
             const { metadata = {} } = item
             return {
               id: item.id,
               download: item.mediaLink,
               checksum: item.md5Hash,
               name: item.name,
-              blockHeight: metadata['latest-blockheight'],
-              date: metadata['backup-date'],
-              version: metadata['provenanced-version'],
+              blockHeight: metadata['x-goog-meta-height'],
+              date: item.timeCreated,
+              version: metadata['x-goog-meta-version'],
               size: item.size,
-              network: metadata['chain-id'],
+              network: item.name,
               indexed: item.mediaLink.includes('indexed') ? 'Yes' : 'No',
             }
           })

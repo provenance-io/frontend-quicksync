@@ -4,7 +4,7 @@ export const TABLE_HEADERS = [
     id: 'download',
   },
   {
-    display: 'Network',
+    display: 'Name',
     id: 'network',
   },
   {
