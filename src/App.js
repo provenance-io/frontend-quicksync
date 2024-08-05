@@ -87,7 +87,6 @@ function App() {
         const data = await res.json()
 
         const finalData = [data]?.map(item => {
-            console.log(item)
             const { metadata = {} } = item
             return {
               id: item.id,
