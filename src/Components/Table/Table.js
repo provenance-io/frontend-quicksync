@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
-import { satisfies } from 'compare-versions'
+// import { satisfies } from 'compare-versions'
 import { fileSize } from 'utils'
 import { EXPLORER_URL } from 'consts'
 import { WarningNote } from 'Components'
@@ -73,10 +73,11 @@ export const Table = ({ className, headers, data: allData, emptyMsg }) => {
       }) => {
         // Eventually this will need to be a cleaner/more fancy function
         const checkWarning = () => {
+          return false
           // if there isn't a version assume it's latest
-          if (!version) return false
+          // if (!version) return false
           // show warning on any version before 1.8.0
-          return satisfies(version, '^1.8.0') ? false : 'warning01'
+          // return satisfies(version, '^1.8.0') ? false : 'warning01'
         }
         const useWarning = checkWarning()
 
